@@ -19,7 +19,11 @@ class LoginFragment: Fragment() {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         // 닉네임이 공백이 아닌 경우만 main activity로 전환이 이루어지도록 함
-        binding.etNickname.addTextChangedListener { text ->
+        binding.etNickname.addTextChangedListener {text ->
+            binding.btnLogin.isEnabled = text.toString().replace(" ", "") != ""
+
+        }
+        binding.btnLogin.setOnClickListener {
             val nickname = binding.etNickname.text.toString()
             val bundle = Bundle()
             bundle.putString("nickname", nickname)

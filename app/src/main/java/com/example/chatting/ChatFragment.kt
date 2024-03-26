@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.chatting.databinding.FragmentChatBinding
 
 class ChatFragment: Fragment() {
@@ -32,7 +34,13 @@ class ChatFragment: Fragment() {
         Toast.makeText(context, "${curUser}로 로그인 하셨습니다", Toast.LENGTH_SHORT).show()
 
         // 리사이클러뷰 설정
+        binding.rvChatList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        adapter = ChatAdapter(curUser, chatList)
+        binding.rvChatList.adapter = adapter
 
+        binding.etMessage.addTextChangedListener { text ->
+            binding.btnSend.isEnabled = text.toString() != ""
+        }
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 }
