@@ -4,18 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:id="@+id/iv_chat_name"
         android:background="@color/main"
         android:text="채팅방"/>
-    <ListView
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="@color/white"
-        android:dividerHeight="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="650dp"
+        android:id="@+id/rv_chat_list" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="메시지를 입력하세요"
+            android:textSize="12sp"
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:maxLines="3" />
